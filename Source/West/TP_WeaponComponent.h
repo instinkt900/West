@@ -53,6 +53,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	float KickX = 0.4f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	float KickY = 0.15f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	float KickDuration = 0.03f;
+
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()

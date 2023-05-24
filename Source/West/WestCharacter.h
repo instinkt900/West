@@ -64,6 +64,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void MyBPEvent();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void Flinch(float AmountX, float AmountY, float Duration);
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

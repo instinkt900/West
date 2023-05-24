@@ -45,6 +45,8 @@ void UTP_WeaponComponent::Fire()
 
 			Bullet->Velocity = SpawnRotation.Vector() * MuzzleVelocity;
 			Bullet->SourceActor = Character;
+
+			Character->Flinch(KickX, KickY, KickDuration);
 		}
 	}
 	

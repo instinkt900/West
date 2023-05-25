@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Camera/PlayerCameraManager.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 
@@ -43,7 +44,11 @@ void UTP_WeaponComponent::Fire()
 			// Spawn the projectile at the muzzle
 			ABullet* Bullet = World->SpawnActor<ABullet>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 
-			Bullet->Velocity = SpawnRotation.Vector() * MuzzleVelocity;
+			const FVector Forward = SpawnRotation.Vector();
+			const FVector Right = UKismetMathLibrary::GetRightVector(SpawnRotation);
+			const FVector Up = UKismetMathLibrary::GetUpVector(SpawnRotation);
+
+			Bullet->Velocity = (Forward + Right * FMath::RandRange(-Spread, Spread) + Up * FMath::RandRange(-Spread, Spread)) * MuzzleVelocity;
 			Bullet->SourceActor = Character;
 
 			Character->Flinch(KickX, KickY, KickDuration);

@@ -62,6 +62,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	float KickDuration = 0.03f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	float Spread = 0.15f;
+
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
